@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="hhtp://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Simulador de Dados</h1>
+    <form action="/" method="post">
+        <div class="input-group mb-3">
+            <input id="dados" name="dados" type="number" class="form-control" placeholder="Quantidade de Dados" aria-label="Username" aria-describedby="sp_user">
+            <span class="input-group-text" id="sp_qtd_dados">Dados</span>
+        </div>
+        <div class="input-group mb-3">
+            <input id="faces" name="faces" type="number" class="form-control" placeholder="Quantidade de Faces" aria-label="text" aria-describedby="sp_password">
+            <span class="input-group-text" id="sp_qtd_faces">&nbsp;Faces&nbsp;</span>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-success" type="submit" >Jogar</button>
+            </div>
+        </div>
+    </form>
+    <div class="row" th:if="${soma}">
+        <div class="col-sm-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Dado</th>
+                    <th scope="col">Resultado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="resultado , cont : ${vetResultado}">
+                    <td th:text="${cont.index + 1}"></td>
+                    <td th:text="${resultado}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="text-center">Soma dos Resultados</h4>
+            <h1 class ="text-center" th:text="${soma}"></h1>
+            <h4 class="text-center mt-5">Maior Resultado</h4>
+            <h1 class="text-center" th:text="${maximo}"></h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
